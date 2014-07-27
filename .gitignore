@@ -1,6 +1,9 @@
-.eunit
-deps
-*.o
 *.beam
+*.o
 *.plt
+.eunit
+.rebar
+deps/
+doc/README.md
+ebin/
 erl_crash.dump

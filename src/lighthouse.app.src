@@ -1,0 +1,11 @@
+{application, lighthouse, [
+  {description, "monitoring"},
+  {vsn, "0.1"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib
+  ]},
+  {mod, { lighthouse_app, []}},
+  {env, []}
+]}.
