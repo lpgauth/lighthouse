@@ -11,10 +11,20 @@
 ]).
 
 %% public
--spec start_link() -> {ok, pid()}.
+-spec start_link() ->
+    {ok, pid()}.
+
 start_link() ->
     supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 %% supervisor callbacks
+-spec init([]) ->
+    {ok, {{one_for_one, 5, 10}, [supervisor:child_spec()]}}.
+
 init([]) ->
-    {ok, {{one_for_one, 5, 10}, []}}.
+    lighthouse_metric:init(),
+    lighthouse_plugin:init(),
+
+    {ok, {{one_for_one, 5, 10}, [
+        ?CHILD(lighthouse_server)
+    ]}}.

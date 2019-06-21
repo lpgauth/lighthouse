@@ -1,11 +1,14 @@
 {application, lighthouse, [
-  {description, "monitoring"},
-  {vsn, "0.1"},
+  {description, "BEAM monitoring"},
+  {vsn, "0.1.0"},
   {registered, []},
   {applications, [
+    foil,
     kernel,
+    metal,
+    statsderl,
     stdlib
   ]},
-  {mod, { lighthouse_app, []}},
+  {mod, {lighthouse_app, []}},
   {env, []}
 ]}.

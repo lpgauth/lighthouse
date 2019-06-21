@@ -1,0 +1,20 @@
+{"1.1.0",
+[{<<"foil">>,
+  {git,"https://github.com/lpgauth/foil.git",
+       {ref,"b55c30ff8b21daf89a85d1565d4b836c7f9e549b"}},
+  0},
+ {<<"granderl">>,{pkg,<<"granderl">>,<<"0.1.5">>},1},
+ {<<"metal">>,
+  {git,"https://github.com/lpgauth/metal.git",
+       {ref,"bbc3f9fa3fa83fa138096234e79ecb61265cadf5"}},
+  0},
+ {<<"parse_trans">>,{pkg,<<"parse_trans">>,<<"3.0.0">>},1},
+ {<<"statsderl">>,
+  {git,"https://github.com/lpgauth/statsderl.git",
+       {ref,"b68ed8eb191614fe02f01aa210357e7eb51eb432"}},
+  0}]}.
+[
+{pkg_hash,[
+ {<<"granderl">>, <<"F20077A68BD80B8D8783BD15A052813C6483771DEC1A5B837D307CBE92F14122">>},
+ {<<"parse_trans">>, <<"9E96B1C9C3A0DF54E7B76F8F685D38BFA1EB21B31E042B1D1A5A70258E4DB1E3">>}]}
+].

@@ -1,4 +1,0 @@
-%% encoding: UTF-8
-{application,lighthouse}.
-{packages,[]}.
-{modules,[lighthouse_app,lighthouse_sup]}.

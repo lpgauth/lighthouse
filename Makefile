@@ -1,39 +1,36 @@
-PROJECT=lighthouse
-REBAR=./rebar
+ELVIS=./bin/elvis
+REBAR3=./bin/rebar3
 
-all: deps compile doc
-
-build-plt: all
-	@dialyzer --build_plt --output_plt ~/.$(PROJECT).plt \
-		--apps erts kernel stdlib crypto public_key ssl
-
-check-plt:
-	@dialyzer --check_plt --plt ~/.$(PROJECT).plt
+all: compile
 
 clean:
-	@echo "Running rebar clean..."
-	@$(REBAR) clean
-	@rm -rf deps ebin
+	@echo "Running rebar3 clean..."
+	@$(REBAR3) clean -a
 
 compile:
-	@echo "Running rebar compile..."
-	@$(REBAR) compile
+	@echo "Running rebar3 compile..."
+	@$(REBAR3) as compile compile
 
-deps:
-	@echo "Running rebar update-deps..."
-	@$(REBAR) update-deps
+dialyzer:
+	@echo "Running rebar3 dialyze..."
+	@$(REBAR3) dialyzer
 
-dialyze:
-	@dialyzer ebin/*.beam --plt ~/.$(PROJECT).plt -I include
+edoc:
+	@echo "Running rebar3 edoc..."
+	@$(REBAR3) as edoc edoc
 
-doc:
-	@echo "Running rebar doc..."
-	@$(REBAR) skip_deps=true doc
+elvis:
+	@echo "Running elvis rock..."
+	@$(ELVIS) rock
 
 eunit:
-	@echo "Running EUnit suite..."
-	@$(REBAR) skip_deps=true eunit
+	@echo "Running rebar3 eunit..."
+	@$(REBAR3) do eunit -cv, cover -v
 
-test: all eunit
+test: elvis xref eunit dialyzer
 
-.PHONY: deps doc test
+xref:
+	@echo "Running rebar3 xref..."
+	@$(REBAR3) xref
+
+.PHONY: clean compile dialyzer edoc elvis eunit xref
