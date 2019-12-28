@@ -1,0 +1,21 @@
+name: Erlang CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: erlang:22.2.1
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Check version
+      run: erl +V
+    - name: Compile
+      run: make
+    - name: Run tests
+      run: make test
